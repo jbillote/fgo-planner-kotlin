@@ -1,9 +1,23 @@
 package com.jbillote.fgoplanner.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class Servant(
-    val name:          String?,
-    val icon:          String,
-    val ascensionMats: List<List<Material>>,
-    val skillMats:     List<List<Material>>,
-    val appendMats:    List<List<Material>>
+    @JsonProperty("id")
+    val id:                 Int?,
+
+    @JsonProperty("name")
+    val name:               String?,
+
+    @JsonProperty("icon")
+    val icon:               String?,
+
+    @JsonProperty("ascensionMaterials")
+    val ascensionMaterials: List<MaterialList>?,
+
+    @JsonProperty("skillMaterials")
+    val skillMaterials:     List<MaterialList>?,
+
+    @JsonProperty("appendMaterials")
+    val appendMaterials:    List<MaterialList>?
 )
