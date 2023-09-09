@@ -11,6 +11,7 @@ import com.jbillote.fgoplanner.model.ServantSearchResponse
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.client.awaitBody
 
 @Repository
 @Service
@@ -18,15 +19,14 @@ class ServantService (
     private val webClient: WebClient
 ) {
 
-    fun getServant(id: Int): Servant? {
+    suspend fun getServant(id: Int): Servant? {
         val s = webClient.get()
             .uri("/nice/JP/servant/$id?lang=en")
             .retrieve()
-            .bodyToMono(ServantResponse::class.java)
-            .block()
+            .awaitBody<ServantResponse>()
 
         return Servant(
-            id = s!!.id,
+            id = s.id,
             name = s.name,
             icon = s.extraAssets["faces"]!!["ascension"]!!["1"],
             ascensionMaterials = processMaterialList(s.ascensionMaterials),
@@ -35,6 +35,7 @@ class ServantService (
         )
     }
 
+    // TODO: Make non-blocking
     fun searchServant(query: String): List<ServantSearch> {
         val servants = ArrayList<ServantSearch>()
 

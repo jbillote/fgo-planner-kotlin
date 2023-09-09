@@ -16,7 +16,7 @@ class ServantController (
 ) {
 
     @GetMapping("/{id}")
-    fun findServantById(@PathVariable id: Int) = servantService.getServant(id)
+    suspend fun findServantById(@PathVariable id: Int) = servantService.getServant(id)
 
     @GetMapping("/search/{query}")
     fun searchForServant(@PathVariable query: String) = servantService.searchServant(query)
