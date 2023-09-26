@@ -51,7 +51,8 @@ class ServantService (
                 servants.add(ServantSearch(
                     id = servant.id,
                     name = servant.name,
-                    icon = servant.extraAssets["faces"]!!["ascension"]!!["1"]
+                    icon = servant.extraAssets["faces"]!!["ascension"]!!["1"],
+                    classIcon = "https://static.atlasacademy.io/JP/ClassIcons/class${3.coerceAtMost(servant.rarity)}_${servant.classId}.png"
                 ))
             }
         }

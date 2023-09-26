@@ -10,5 +10,8 @@ data class ServantSearch(
     val name:               String?,
 
     @JsonProperty("icon")
-    val icon:               String?
+    val icon:               String?,
+
+    @JsonProperty("classIcon")
+    val classIcon:          String?
 )

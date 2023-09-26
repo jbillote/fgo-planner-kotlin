@@ -10,5 +10,11 @@ data class ServantSearchResponse(
     val name:        String,
 
     @JsonProperty("extraAssets")
-    val extraAssets: Map<String, Map<String, Map<String, String>>>
+    val extraAssets: Map<String, Map<String, Map<String, String>>>,
+
+    @JsonProperty("classId")
+    val classId:     Int,
+
+    @JsonProperty("rarity")
+    val rarity:      Int
 )
