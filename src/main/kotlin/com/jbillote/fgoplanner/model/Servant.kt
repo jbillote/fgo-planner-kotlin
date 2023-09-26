@@ -9,6 +9,9 @@ data class Servant(
     @JsonProperty("name")
     val name:               String?,
 
+    @JsonProperty("classIcon")
+    val classIcon:          String?,
+
     @JsonProperty("icon")
     val icon:               String?,
 

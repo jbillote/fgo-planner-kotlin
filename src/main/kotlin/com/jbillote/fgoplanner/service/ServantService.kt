@@ -31,7 +31,8 @@ class ServantService (
             icon = s.extraAssets["faces"]!!["ascension"]!!["1"],
             ascensionMaterials = processMaterialList(s.ascensionMaterials),
             appendMaterials = processMaterialList(s.appendMaterial),
-            skillMaterials = processMaterialList(s.skillMaterials)
+            skillMaterials = processMaterialList(s.skillMaterials),
+            classIcon = "https://static.atlasacademy.io/JP/ClassIcons/class${3.coerceAtMost(s.rarity)}_${s.classId}.png"
         )
     }
 
