@@ -15,6 +15,15 @@ data class Servant(
     @JsonProperty("icon")
     val icon:               String?,
 
+    @JsonProperty("portraits")
+    val portraits:         List<String?>?,
+
+    @JsonProperty("skills")
+    val skills:            List<Skill>?,
+
+    @JsonProperty("appends")
+    val appends   :        List<Skill>?,
+
     @JsonProperty("ascensionMaterials")
     val ascensionMaterials: List<MaterialList>?,
 

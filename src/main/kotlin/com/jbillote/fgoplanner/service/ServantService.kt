@@ -7,6 +7,7 @@ import com.jbillote.fgoplanner.model.Servant
 import com.jbillote.fgoplanner.model.ServantResponse
 import com.jbillote.fgoplanner.model.ServantSearch
 import com.jbillote.fgoplanner.model.ServantSearchResponse
+import com.jbillote.fgoplanner.model.Skill
 
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
@@ -25,10 +26,28 @@ class ServantService (
             .retrieve()
             .awaitBody<ServantResponse>()
 
+        val portraits = arrayListOf<String?>()
+        for (k in s.extraAssets["charaGraph"]!!["ascension"]!!.keys) {
+            portraits.add(k.toInt() - 1, s.extraAssets["charaGraph"]!!["ascension"]!![k])
+        }
+
+        val skills = arrayListOf<Skill>()
+        for (skill in s.skills) {
+            skills.add(skill.num - 1, Skill(skill.name, skill.icon))
+        }
+
+        val appends = arrayListOf<Skill>()
+        for (append in s.appends) {
+            appends.add(Skill(append.skill.name, append.skill.icon))
+        }
+
         return Servant(
             id = s.id,
             name = s.name,
             icon = s.extraAssets["faces"]!!["ascension"]!!["1"],
+            portraits = portraits,
+            skills = skills,
+            appends = appends,
             ascensionMaterials = processMaterialList(s.ascensionMaterials),
             appendMaterials = processMaterialList(s.appendMaterial),
             skillMaterials = processMaterialList(s.skillMaterials),

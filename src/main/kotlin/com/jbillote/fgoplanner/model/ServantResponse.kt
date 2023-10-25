@@ -18,6 +18,12 @@ data class ServantResponse (
     @JsonProperty("extraAssets")
     val extraAssets:         Map<String, Map<String, Map<String, String>>>,
 
+    @JsonProperty("skills")
+    val skills:             List<SkillResponse>,
+
+    @JsonProperty("appendPassive")
+    val appends:            List<AppendResponse>,
+
     @JsonProperty("ascensionMaterials")
     val ascensionMaterials: Map<String, MaterialResponse>,
 
