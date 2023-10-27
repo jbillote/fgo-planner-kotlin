@@ -19,6 +19,9 @@ data class ItemResponse(
 )
 
 data class ItemDetailsResponse(
+    @JsonProperty("id")
+    val id:   Int,
+
     @JsonProperty("name")
     val name: String,
 

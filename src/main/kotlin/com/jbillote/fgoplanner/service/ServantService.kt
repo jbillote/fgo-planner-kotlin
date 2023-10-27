@@ -90,9 +90,10 @@ class ServantService (
             for (i in items!!) {
                 processedItems.add(
                     Material(
-                    name = i.item.name,
-                    icon = i.item.icon,
-                    amount = i.amount
+                        id = i.item.id,
+                        name = i.item.name,
+                        icon = i.item.icon,
+                        amount = i.amount
                 )
                 )
             }
